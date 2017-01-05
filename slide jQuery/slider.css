@@ -1,0 +1,35 @@
+.carousel {
+	height: 356px;
+	width: 430px;
+	overflow: hidden;
+	margin: 0 auto;
+}
+
+#contenant {
+	height: 358px;
+	width: 1400px;
+	transition-duration: 3s;
+}
+
+.carousel2 {
+	height: 400px;
+	width: 430px;
+	overflow: hidden;
+	margin: 0 auto;
+}
+
+#contenant2 {
+	height: 358px;
+	width: 1400px;
+	transition-duration: 3s;
+}
+
+#precedent {
+	
+	margin-left: 100px;
+}
+
+#suivant {
+	
+	margin-left: 50px;
+}
