@@ -16,7 +16,10 @@
 			<img class="slide2" src="images/02.jpg">
 			<img class="slide3" src="images/03.jpg">
 		</div>
+	<button type="button" id="precedent">Précédent</button>
+	<button type="button" id="suivant">Suivant</button>
 	</div>
+
 	
 	<!-- <div class="carousel2"> -->
 		<!-- <div id="contenant2" style="margin-left:0px, margin-right:0px;"> -->
@@ -24,8 +27,7 @@
 			<!-- <img class="slide5" src="images/02.jpg"> -->
 			<!-- <img class="slide6" src="images/03.jpg"> -->
 		<!-- </div> -->
-	<!-- <button type="button" id="precedent">Précédent</button> -->
-	<!-- <button type="button" id="suivant">Suivant</button> -->
+
 	<!-- </div> -->
 	
 <script src="http://code.jquery.com/jquery-1.11.3.min.js">
@@ -33,14 +35,51 @@
 
 <script>
 
-$(function(){
+$(function slider(){
 
-setInterval(function(){
+var $slider = setInterval(function(){
 $("#contenant").animate({marginLeft:-400},10,function(){
 
 $(this).css({marginLeft:0}).find("img:last").after($(this).find("img:first"));
 })
 }, 1000);
+
+
+
+var i = 0;
+var $slide = $("#contenant").marginLeft;
+var $image = $("#contenant img");
+var $index = $image.length - 1;
+var $currentImage = $image.eq(i);
+
+$("#suivant").click(function(){
+
+i++;
+clearInterval($slider);
+
+
+if (i <= $index){
+$slide = -400+"px";
+}
+else {
+i = $index;
+}
+
+});
+
+$("#precedent").click(function(){
+
+i--;
+clearInterval($slider);
+
+if (i >= 0){
+$slide = 400+"px";
+}
+else {
+i = 0;
+}
+
+})
 
 });
 
