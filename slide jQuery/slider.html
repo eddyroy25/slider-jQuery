@@ -16,72 +16,48 @@
 			<img class="slide2" src="images/02.jpg">
 			<img class="slide3" src="images/03.jpg">
 		</div>
-	<button type="button" id="precedent">Précédent</button>
-	<button type="button" id="suivant">Suivant</button>
+
 	</div>
 
 	
-	<!-- <div class="carousel2"> -->
-		<!-- <div id="contenant2" style="margin-left:0px, margin-right:0px;"> -->
-			<!-- <img class="slide4" src="images/01.jpg"> -->
-			<!-- <img class="slide5" src="images/02.jpg"> -->
-			<!-- <img class="slide6" src="images/03.jpg"> -->
-		<!-- </div> -->
-
-	<!-- </div> -->
+	<div class="carousel2">
+		<div id="contenant2" style="margin-left:0px, margin-right:0px;">
+			<img class="slide4" src="images/01.jpg">
+			<img class="slide5" src="images/02.jpg">
+			<img class="slide6" src="images/03.jpg">
+		</div>
+	<button type="button" id="precedent">Précédent</button>
+	<button type="button" id="suivant">Suivant</button>
+	</div>
 	
 <script src="http://code.jquery.com/jquery-1.11.3.min.js">
 </script>
 
 <script>
+$(document).ready(function() {
+	$slide = $("#contenant2");
+	$image = $("#contenant2 img");
+	$index = $image.length - 1;
+	var i = 0;
+	$currentImage = $image.eq(i);
 
-$(function slider(){
+	var slider = setInterval(function(){
+		$("#contenant").animate({marginLeft:-400},10,function(){
+			$(this).css({marginLeft:0}).find("img:last").after($(this).find("img:first"));
+		})
+	}, 1000);
 
-var $slider = setInterval(function(){
-$("#contenant").animate({marginLeft:-400},10,function(){
-
-$(this).css({marginLeft:0}).find("img:last").after($(this).find("img:first"));
-})
-}, 1000);
-
-
-
-var i = 0;
-var $slide = $("#contenant").marginLeft;
-var $image = $("#contenant img");
-var $index = $image.length - 1;
-var $currentImage = $image.eq(i);
-
-$("#suivant").click(function(){
-
-i++;
-clearInterval($slider);
-
-
-if (i <= $index){
-$slide = -400+"px";
-}
-else {
-i = $index;
-}
-
+	$("#suivant").click(function(){
+		i += 1;
+		$slide.css({marginLeft:0}).find("img:last").after($slide.find("img:first"));
+	});
+	
+	$("#precedent").click(function(){
+		i -= 1;
+		$slide.css({marginLeft:0}).find("img:first").before($slide.find("img:last"));
+	});
 });
 
-$("#precedent").click(function(){
-
-i--;
-clearInterval($slider);
-
-if (i >= 0){
-$slide = 400+"px";
-}
-else {
-i = 0;
-}
-
-})
-
-});
 
 </script>
 	
